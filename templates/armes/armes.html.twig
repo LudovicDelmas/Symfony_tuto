@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Armes {% endblock %}
+
+{% block monTitre %} Liste des Armes {% endblock %}
+
+{% block body %}
+<table class="table">
+    {% for arme in armes %}
+        <tr>
+            <td><img src="{{asset('images/armes/' ~ arme.name ~ '.png')}}" alt="" srcset=""></td>
+            <td><a href="{{ path('afficher_arme', {'name' : arme.name|lower}) }}">{{ arme.name }}</a></td>
+            <td>{{ arme.description }}</td>
+            <td>{{arme.degats}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
