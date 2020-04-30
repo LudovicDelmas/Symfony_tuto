@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Personnage;
-use App\Entity\Arme;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -41,26 +41,5 @@ class PersonnageController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/armes", name="armes")
-     */
-    public function armes()
-    {
-        Arme::creerArmes();
-        return $this->render('armes/armes.html.twig', [
-            "armes" => Arme::$armes
-        ]);
-    }
 
-    /**
-     * @Route("/armes/{name}", name="afficher_arme")
-     */
-    public function afficherArme($name) 
-    {
-        Arme::creerArmes();
-        $arme = arme::getArmeParNom($name);
-        return $this->render('armes/arme.html.twig', [
-            "arme" => $arme
-        ]);
-    }
 }
